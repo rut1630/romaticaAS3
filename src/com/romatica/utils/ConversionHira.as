@@ -1,6 +1,9 @@
 /**
+ * 元ソース
+ * @author moriyak
+ * @see http://wonderfl.net/c/dd2x
  *============================================================
- * copyright(c). 
+ * copyright(c). romatca.com
  * @author  itoz
  *============================================================
  *
