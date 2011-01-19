@@ -9,6 +9,9 @@
  * 	-2010.3	ボタンを「機能させる/機能させなくする」ファンクションを追加
  * 	-2010.8 　パッケージをridからcom.romaticaへ変更
  */
+ 
+ 
+ 
 package com.romatica.ui
 {
 	import flash.display.Graphics;
