@@ -9,13 +9,13 @@
  * 	-2010.3	ボタンを「機能させる/機能させなくする」ファンクションを追加
  * 	-2010.8 　パッケージをridからcom.romaticaへ変更
  */
-package com.romatica.ui {
-	import flash.errors.IllegalOperationError;
-	import flash.geom.Rectangle;
+package com.romatica.ui
+{
 	import flash.display.Graphics;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
+	import flash.geom.Rectangle;
 
 	dynamic public class SimpleButtonEvents extends MovieClip {
 
