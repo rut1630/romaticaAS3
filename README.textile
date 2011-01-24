@@ -19,9 +19,11 @@ h3. /ui
  * シンプルにスイッチメニュー(複数選択可能)を作成したい(HTMLのチェックボックスのような)。
  
  h3. /utils
- h4. /utils/AccessTimeCheck.as
+ 
+h4. /utils/AccessTimeCheck.as
  * 前回のアクセスから何分経過したか取得したい。
- h4. /utils/ArrayUtil.as
+ 
+h4. /utils/ArrayUtil.as
  * 配列を、ランダムに並べ替え。
  * 配列を、指定された配列順に並べ替え。
  * ランダム数値配列を作成。
@@ -30,17 +32,23 @@ h3. /ui
  * オブジェクト配列の値を元に、指定文字列の登場順にならべかえる
  * 1次元配列を2次元配列にしたい(配列を分割)
  * 2次元配列を1次元にしたい
- h4. /utils/BitmapDataUtil.as
+ 
+h4. /utils/BitmapDataUtil.as
  * BitmapDataの縦か横の長いほうを基準に、指定した値まで（比率はそのままに）リサイズ
- h4. /utils/ConversionHira.as
+ 
+h4. /utils/ConversionHira.as
  * ローマ字をひらがなに変換したい。
- h4. /utils/ConversionHira.as
+ 
+h4. /utils/ConversionHira.as
  * ひらがなをカタカナに、カタカナをひらがなに変換したい。
- h4. /utils/DateUtil.as
+
+h4. /utils/DateUtil.as
  * 2つのDateクラスの差(日、時、分、秒、ミリ秒)を取得したい。
- h4. /utils/FormInLine.as
+
+h4. /utils/FormInLine.as
  * タイル状に並べた位置を取得したい。
- h4. /utils/NumUtil.as
+
+h4. /utils/NumUtil.as
  * 整数の頭に指定した桁になるように0を足したい(00125,002等)。
  
  
