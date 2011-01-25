@@ -7,24 +7,24 @@ h2. 逆引き
 h3. +/anmation+
  * 8の字にアニメーションする位置情報を取得したい。
  
-h3. /load
+h3. +/load+
  * 非同期で複数画像を順に読み込みたい。
  * 非同期で複数XMLを順に読み込みたい。
  
-h3. /net
+h3. +/net+
  * swfの再生されている場所がローカルかサーバーか判断したい。
 
-h3. /ui
+h3. +/ui+
  * シンプルにボタンイベントを設定したい。
  * シンプルにトグルボタンを作成したい。
  * シンプルにスイッチメニュー(単一選択)を作成したい(HTMLのラジオボタンのような)。
  * シンプルにスイッチメニュー(複数選択可能)を作成したい(HTMLのチェックボックスのような)。
  
 
-h3. /utils/AccessTimeCheck.as
+h3. +/utils/AccessTimeCheck.as+
  * 前回のアクセスから何分経過したか取得したい。
  
-h3. /utils/ArrayUtil.as
+h3. +/utils/ArrayUtil.as+
  * 配列を、ランダムに並べ替え。
  * 配列を、指定された配列順に並べ替え。
  * ランダム数値配列を作成。
@@ -34,22 +34,24 @@ h3. /utils/ArrayUtil.as
  * 1次元配列を2次元配列にしたい(配列を分割)
  * 2次元配列を1次元にしたい
  
-h3. /utils/BitmapDataUtil.as
+h3. +/utils/BitmapDataUtil.as+
  * BitmapDataの縦か横の長いほうを基準に、指定した値まで（比率はそのままに）リサイズ
  
-h3. /utils/ConversionHira.as
+h3. +/utils/ConversionHira.as+
  * ローマ字をひらがなに変換したい。
  
-h3. /utils/ConversionHira.as
+h3. +/utils/ConversionHira.as+
  * ひらがなをカタカナに、カタカナをひらがなに変換したい。
 
-h3. /utils/DateUtil.as
+h3. +/utils/DateUtil.as+
  * 2つのDateクラスの差(日、時、分、秒、ミリ秒)を取得したい。
 
-h3. /utils/FormInLine.as
+h3. +/utils/FormInLine.as+
  * タイル状に並べた位置を取得したい。
 
-h3. /utils/NumUtil.as
+h3. +/utils/NumUtil.as+
  * 整数の頭に指定した桁になるように0を足したい(00125,002等)。
  
+ 
+ thank you!
  
