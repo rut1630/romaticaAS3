@@ -6,7 +6,8 @@ author itoz
 h2. 逆引きINDEX
 
 h4. +com/romatica/anmation/+
- * 8の字にアニメーションする位置情報を取得したい。+FigureEight.as+
+ * 8の字にアニメーションする位置情報を取得したい。
+ +FigureEight.as+
 
 h4. +com/romatica/load/+ 
  * 非同期で複数画像を順に読み込みたい。+ImageLoadQueue.as+
