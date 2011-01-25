@@ -1,4 +1,4 @@
-h1.Romatica AS3 Class
+h1. Romatica AS3 Class
 "http://www.romatica.com/":http://www.romatica.com/
 author itoz
 
