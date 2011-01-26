@@ -19,9 +19,9 @@ package com.romatica.utils{
 		
 		/**
 		 * 2つのDateクラスの差を求め、日、時、分、秒、ミリ秒、を取得.
-		 * @data1 ターゲットDate
-		 * @data2 対象Date
-		 * @debug トレース出力有り無し
+		 * @param data1 ターゲットDate
+		 * @param data2 対象Date
+		 * @param debug トレース出力有り無し
 		 * @return Object d,h,m,s,msが入っている。
 		 * 
 		 * @example : 
