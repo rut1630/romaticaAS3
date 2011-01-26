@@ -6,8 +6,6 @@
  * -------------------------------------------------------
  * -2010.12.28 トグルモード追加
  */
- 
- 
 package com.romatica.ui
 {
 	import com.romatica.events.SwitchMenuEvent;
