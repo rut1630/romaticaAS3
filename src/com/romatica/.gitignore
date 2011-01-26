@@ -1,9 +1,0 @@
-#bin/*.swf
-#bin-debug/
-#bin-release/
-.project
-.settings
-libs/*.swc
-libs/*.swf
-libs/*.fla
-.svn
