@@ -2,11 +2,11 @@
  * -------------------------------------------------------
  * copyright(c). romatica.com
  * @author itoz (http://www.romatica.com/)
- * @version 2.3
+ * @version 2.4
  * -------------------------------------------------------
  * -2011.2.3 各イベントを全て実行するときforのmaxを動的に取得するように変更
  * -2011.2.3 TODO remove()作成中
- * 
+ * -2011.2.8　バグ修正　読み込み済みをまた読み込んでしまうバグ修正
  */
 package com.romatica.loader
 {
@@ -178,6 +178,7 @@ package com.romatica.loader
 		 */
 		public function load () : void
 		{
+			trace("[LOAD] " + _loading +"   / "+ _queues[0]);
 			if (_loading) return;
 			_loading = true;
 			var url : String = _queues[0];
@@ -185,7 +186,7 @@ package com.romatica.loader
 			_nowLoadURL = url;
 			// すでにロード完了している
 			if (_loadCheckDictionary[url] != undefined) {
-				if (!_loadCheckDictionary[url]) {
+				if (_loadCheckDictionary[url]) {
 					if (_debug) trace( "[ALREADY LOADED!] : " + url );
 					_doCompleteFunctions( url );// URLに紐づくコンプリートファンクションすべて実行
 					_deleteHeadQueue();// キューの先頭削除
@@ -205,6 +206,7 @@ package com.romatica.loader
 			}
 			_loader.load( new URLRequest( _queues[0] ) , new LoaderContext( true ) );
 			if (_debug) trace( "[LOAD START]　" + _nowLoadURL );
+			if (_debug) trace( "[LOAD START2]　" + _loader );
 		}
 
 		// ======================================================================
@@ -219,6 +221,7 @@ package com.romatica.loader
 			if (_debug) trace( "	▽キューから削除スタート　=" + url );
 			// urlがキューにあるか？
 			var i : int = _queues.indexOf( url );
+			var nextFlag:Boolean = false;
 			if (i != -1) {
 				if (_debug) trace( "	　削除対象が見つかりました " + url );
 				// 　▼ロード完了記録を破棄
@@ -250,6 +253,9 @@ package com.romatica.loader
 					_loader = null;
 					_deleteHeadQueue();
 					if (_debug) trace( "		　	キュー先頭から抜きました" );
+				
+					nextFlag = true;
+					
 				}
 				else {
 					if (_debug) trace( "		▽今読み込み中ではない" );
@@ -261,13 +267,20 @@ package com.romatica.loader
 				}
 				if (_debug) trace( "	[×]キューから削除しました　=" + url );
 				if (_debug) trace( "	------------------------------------- /" );
+				
 			}
 			else {
 				if (_debug) trace( "	削除対象は見つかりませんでした" + url );
 				if (_debug) trace( "	------------------------------------- /" );
 			}
-			if (_debug) trace( "	　次のキューあるかチェック" );
-			_checkNextQueue();
+			//★
+			if (nextFlag) {
+			// if(_loading){
+				if (_debug) trace( "	　次のキューあるかチェック" );
+				_checkNextQueue();
+			}
+			
+				
 		}
 
 		// ======================================================================
@@ -319,6 +332,7 @@ package com.romatica.loader
 			}
 			_queues = new Array();
 			if (_debug) trace( "	◇[ALL STOP] : すべてのロードを停止しました" );
+			_loading = false;
 		}
 
 		// ======================================================================
@@ -486,7 +500,7 @@ package com.romatica.loader
 		//
 		private function _loadCompleteHandler (event : Event) : void
 		{
-			if (_debug) trace( " [COMPLETE] ");
+			if (_debug) trace( " [COMPLETE] " + _queues[0]);
 			var url : String = _queues[0];
 			var bmd : BitmapData = Bitmap( _loader.content ).bitmapData;
 			_loadCheckDictionary[url] = true;// ロード完了を記録
