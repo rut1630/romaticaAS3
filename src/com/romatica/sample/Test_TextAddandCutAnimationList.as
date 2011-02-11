@@ -9,7 +9,7 @@
 package com.romatica.sample
 {
 	import com.romatica.progression.commands.lists.TextAddAnimationList;
-	import com.romatica.progression.commands.lists.TextCutAnimation;
+	import com.romatica.progression.commands.lists.TextCutAnimationList;
 	import flash.display.GradientType;
 	import flash.display.SpreadMethod;
 	import flash.display.Sprite;
@@ -36,7 +36,7 @@ package com.romatica.sample
 		private var _tfm 		: TextFormat;
 		private var _mainLoopList : SerialList;
 		private var _addList 	: TextAddAnimationList;
-		private var _cutList 	: TextCutAnimation;
+		private var _cutList 	: TextCutAnimationList;
 
 
 		public function Test_TextAddandCutAnimationList ()
@@ -74,7 +74,7 @@ package com.romatica.sample
 			
 			// ----------------------------------------------------------------
 			//　テキストカットアニメーション
-			_cutList = new TextCutAnimation(
+			_cutList = new TextCutAnimationList(
 				{
 					onStart:function():void		{ trace( "	[cut start]");},
 					onComplete:function():void	{ trace( "	[cut complete]");_tf.text="";},

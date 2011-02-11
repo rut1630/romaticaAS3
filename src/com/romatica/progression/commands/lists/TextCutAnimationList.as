@@ -16,7 +16,7 @@ package com.romatica.progression.commands.lists
 	/**
 	 * TextFieldの文字を1文字づつ、消去していくアニメーションコマンドリスト
 	 */
-	public class TextCutAnimation extends SerialList
+	public class TextCutAnimationList extends SerialList
 	{
 		private var _initObj 	: Object;
 		private var _textField 	: TextField;
@@ -29,7 +29,7 @@ package com.romatica.progression.commands.lists
 		 * @param textField
 		 * @param speed
 		 */
-		function TextCutAnimation ( initObj : Object ,
+		function TextCutAnimationList ( initObj : Object ,
 	 								textField:TextField,
 	 								speed:Number =0.03
 	 								)
