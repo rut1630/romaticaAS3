@@ -144,7 +144,7 @@ package com.romatica.loader
 			// ▼キューに追加
 			if (_completeFunctionsDictionary[url] == undefined) {
 				// 読み込み完了していない
-				if (_debug) trace( "[ADDED] : " + url );
+				if (_debug) trace( "▼[ADDED] : " + url );
 				_queues.push( url );
 				_completeFunctionsDictionary[url] = new Array();
 				_progressFunctionsDictionary[url] = new Array();
@@ -178,8 +178,9 @@ package com.romatica.loader
 		 */
 		public function load () : void
 		{
-			trace("[LOAD] " + _loading +"   / "+ _queues[0]);
+			//trace("▽[LOAD] " + _loading +"   / "+ _queues[0]);
 			if (_loading) return;
+			if(_queues[0] ==undefined) return;
 			_loading = true;
 			var url : String = _queues[0];
 			if (url == null) return;
@@ -205,8 +206,7 @@ package com.romatica.loader
 				_loader.contentLoaderInfo.addEventListener( Event.OPEN , _loadOpenHandler );
 			}
 			_loader.load( new URLRequest( _queues[0] ) , new LoaderContext( true ) );
-			if (_debug) trace( "[LOAD START]　" + _nowLoadURL );
-			if (_debug) trace( "[LOAD START2]　" + _loader );
+			if (_debug) trace( "	[LOAD START]　" + _nowLoadURL );
 		}
 
 		// ======================================================================
@@ -255,7 +255,6 @@ package com.romatica.loader
 					if (_debug) trace( "		　	キュー先頭から抜きました" );
 				
 					nextFlag = true;
-					
 				}
 				else {
 					if (_debug) trace( "		▽今読み込み中ではない" );
@@ -266,56 +265,50 @@ package com.romatica.loader
 					_queues = queues.concat( splitArr );
 				}
 				if (_debug) trace( "	[×]キューから削除しました　=" + url );
-				if (_debug) trace( "	------------------------------------- /" );
 				
 			}
 			else {
 				if (_debug) trace( "	削除対象は見つかりませんでした" + url );
-				if (_debug) trace( "	------------------------------------- /" );
 			}
-			//★
 			if (nextFlag) {
-			// if(_loading){
 				if (_debug) trace( "	　次のキューあるかチェック" );
 				_checkNextQueue();
 			}
-			
-				
 		}
 
 		// ======================================================================
 		/**
 		 * 指定のURLの画像をロード済みなら、解放する。
 		 */
-		public function remove (url : String) : void
-		{
+		//public function remove (url : String) : void
+		//{
 			// すでにロード完了している?
-			if (_loadCheckDictionary[url] != undefined && _loadCheckDictionary[url]) {
-				// ロード完了している
-				if (_debug) trace( "[REMOVE START] : " + url );
-				_deleteFunctions( url );
-				// ▼ロード完了を破棄
-				_loadCheckDictionary[url] = null;
-				delete _loadCheckDictionary[url];
-				// ▼イメージを解放
-				(_bitmapdataDictionary[url] as BitmapData).dispose();
-				delete _bitmapdataDictionary[url];
-				// ▼ロード済みURL配列から削除
-				var i : int = _loadedURLArray.indexOf( url );
-				if (i != -1) {
-					var loadeds : Array = _loadedURLArray.slice();
-					var splitArr : Array = loadeds.splice( i );
-					splitArr.shift();
-					_loadedURLArray = loadeds.concat( splitArr );
-				}
-				else {
-					if (_debug) trace( "[WARNING] : ロード済みURL配列から削除できませんでした" + url );
-				}
-			}
-			else {
-				//ロード完了していない。（キューにない。or ロード中。）
-			}
-		}
+//			if (_loadCheckDictionary[url] != undefined && _loadCheckDictionary[url]) {
+//				// ロード完了している
+//				if (_debug) trace( "[REMOVE START] : " + url );
+//				_deleteFunctions( url );
+//				// ▼ロード完了を破棄
+//				_loadCheckDictionary[url] = null;
+//				delete _loadCheckDictionary[url];
+//				// ▼イメージを解放
+//				(_bitmapdataDictionary[url] as BitmapData).dispose();
+//				delete _bitmapdataDictionary[url];
+//				// ▼ロード済みURL配列から削除
+//				var i : int = _loadedURLArray.indexOf( url );
+//				if (i != -1) {
+//					var loadeds : Array = _loadedURLArray.slice();
+//					var splitArr : Array = loadeds.splice( i );
+//					splitArr.shift();
+//					_loadedURLArray = loadeds.concat( splitArr );
+//				}
+//				else {
+//					if (_debug) trace( "[WARNING] : ロード済みURL配列から削除できませんでした" + url );
+//				}
+//			}
+//			else {
+//				//ロード完了していない。（キューにない。or ロード中。）
+//			}
+		//}
 		
 		// ======================================================================
 		/**
@@ -323,16 +316,17 @@ package com.romatica.loader
 		 */
 		public function allStop () : void
 		{
+			//TODO　このメソッドバグあり。
 			if (_debug) trace( "	▽[ALL STOP] : すべてのロードを停止スタート" );
+			_loading = false;
 			_loaderRemoveEventListeners();
 			for (var i : int = 0; i < _queues.length; i++) {
 				var trgURL : String = _queues[i];
 				_queues[i] = null;
 				stop( trgURL );
 			}
-			_queues = new Array();
+			_queues = [];
 			if (_debug) trace( "	◇[ALL STOP] : すべてのロードを停止しました" );
-			_loading = false;
 		}
 
 		// ======================================================================
@@ -383,7 +377,7 @@ package com.romatica.loader
 		// 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
 		private function _loadOpenHandler (event : Event) : void
 		{
-			if (_debug) trace( " [OPEN]  " /*+ _queues[0]*/ );
+			if (_debug) trace( "	[OPEN]  " /*+ _queues[0]*/ );
 			var url : String = _queues[0];
 			// event
 			var open : ImageLoadQueueEvent = new ImageLoadQueueEvent( ImageLoadQueueEvent.OPEN );
@@ -418,7 +412,7 @@ package com.romatica.loader
 					compFnc( progress );// 登録されているプログレスファンクションを実行
 				}
 			}
-			if (_debug) trace( " [Progress] :" + (progress.percent) + " %　");
+			if (_debug) trace( "	[Progress] :" + (progress.percent) + " %　");
 		}
 
 		// _____________________________________________________________________
@@ -500,7 +494,7 @@ package com.romatica.loader
 		//
 		private function _loadCompleteHandler (event : Event) : void
 		{
-			if (_debug) trace( " [COMPLETE] " + _queues[0]);
+			if (_debug) trace( "	[COMPLETE] " + _queues[0]);
 			var url : String = _queues[0];
 			var bmd : BitmapData = Bitmap( _loader.content ).bitmapData;
 			_loadCheckDictionary[url] = true;// ロード完了を記録
@@ -527,12 +521,12 @@ package com.romatica.loader
 		private function _checkNextQueue () : void
 		{
 			_loading = false;
-			if (_debug) trace( ' [? HAS NEXT ]  > ' + (_queues[0]!=undefined ) );
+			if (_debug) trace( '　　[?NEXT] > ' + (_queues[0]!=undefined ) );
 			if (_queues.length != 0) {
 				load();
 			}
 			else {
-				if (_debug) trace( "◆ [COMPLETE QUEUE!]" );
+				if (_debug) trace( "〓[COMPLETE QUEUE!]" );
 				_loaderRemoveEventListeners();// ローダーとイベント消す
 				_loader = null;
 			}

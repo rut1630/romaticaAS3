@@ -20,7 +20,7 @@ package com.romatica.loader
 					
 		function load():void;
 		
-		function remove (url : String) : void;
+		//function remove (url : String) : void;
 		
 		function stop (url : String) : void;
 		
