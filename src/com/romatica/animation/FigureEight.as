@@ -34,6 +34,7 @@ package com.romatica.animation
 	 */
 	public class FigureEight extends Sprite
 	{
+		
 		private var _startFrag : Boolean;
 		private var _p : Point;
 		private var _offsetPoint : Point;
