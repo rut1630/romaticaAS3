@@ -1,7 +1,7 @@
 /**
  *============================================================
- * copyright(c) 2011
- * @author  author
+ * copyright(c) 2011 www.romatica.com
+ * @author itoz
  * 2011/02/25
  *============================================================
  */
@@ -14,7 +14,7 @@ package com.romatica.animation
     import flash.utils.Timer;
 
     /**
-     * @author itoz
+     * Shaker
      */
     public class Shaker extends Sprite
     {
@@ -75,7 +75,7 @@ package com.romatica.animation
             }
             if (_doArr != null) {
                 for (var i : int = 0; i < _doArr.length; i++) {
-                    var sobj : ShakeObject = _doArr[i]  as ShakeObject;
+                    var sobj : MovieClip = _doArr[i]  as MovieClip;
                     sobj.x = sobj.defX;
                     sobj.y = sobj.defY;
                 }
@@ -97,7 +97,8 @@ package com.romatica.animation
                 }
             }
         }
-          private function padIndent(indents : int) : String
+
+        private function padIndent(indents : int) : String
         {
             var indent : String = "";
             for (var ii : uint = 0; ii < indents; ii++) {
