@@ -1,70 +1,70 @@
 /**
- * ============================================================
- * copyright(c). romatica.com
- * @author itoz (http://www.romatica.com/)
+ *============================================================
+ * copyright(c) 2011
+ * @author  itoz
  * 2011/03/23
  *============================================================
  */
 package com.romatica.air
 {
+    import flash.utils.ByteArray;
     import flash.filesystem.FileMode;
     import flash.filesystem.FileStream;
     import flash.filesystem.File;
     /**
-     *  IOObject.as
+     *  IOByteArray.as
      *  アプリケーションストレージディレクトリに、
-     *  Objectを[保存][取り出し][消去]する。
+     *  ByteArrayを[保存][取り出し][消去]する。
      */
-    public class IOObject extends Object
+    public class IOByteArray
     {
-    	
     	// ======================================================================
     	/**
-    	 * オブジェクトを書きこみ　　　　
+    	 * ByteArrayを書きこみ　　　　
     	 */
-        public static function write(obj : Object, filename : String) : void
+         public static function write(byteArray : ByteArray, filename : String) : void
         {
             var appStorageDir : File = File.applicationStorageDirectory;
             var f : File = appStorageDir.resolvePath( filename);
             var s : FileStream = new FileStream();
             try {
                 s.open(f, FileMode.WRITE);
-                s.writeObject(obj);
+                s.writeBytes(byteArray);
             } catch(e : Error) {
-            	 e.message = "[ERROR IOObject.write] " + e.message;
+            	 e.message = "[ERROR IOByteArray.write] " + e.message;
                 throw e;
             } finally {
                 s.close();
             }
-        	
         }
 
         // ======================================================================
         /**
-         * オブジェクトを読み込み　　
+         * ByteArrayを読み込み　　
          */
-        public static function read( filename : String) : Object
+       public static function read( filename : String) : ByteArray
         {
             var appStorageDir : File = File.applicationStorageDirectory;
             var f : File = appStorageDir.resolvePath(filename);
-            var obj : Object;
+            var data : ByteArray ;
             var s : FileStream = new FileStream();
             try {
                 s.open(f, FileMode.READ);
-                obj = s.readObject();
+                data = new ByteArray();
+                s.readBytes(data);
             } catch (e : Error) {
-                e.message = "[ERROR IOObject.read] " +e.message;
+                e.message = "[ERROR IOByteArray.read] " +e.message;
                 throw e;
             } finally {
                 s.close();
             }
-            return obj;
+            return data;
             
         }
 
         // ======================================================================
         /**
-         * 保存されているデータを消す　　　　
+         * 保存されているByteArrayデータを消す　　　　
          */
         public static function clear(filename : String) : void
         {
@@ -73,7 +73,7 @@ package com.romatica.air
             try {
                 f.deleteFile();
             } catch(e : Error) {
-                e.message = "[ERROR IOObject.clear] " + e.message;
+                e.message = "[ERROR IOByteArray.clear] " + e.message;
                 throw e;
             }
         }
