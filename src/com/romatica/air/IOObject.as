@@ -17,7 +17,6 @@ package com.romatica.air
      */
     public class IOObject extends Object
     {
-    	
     	// ======================================================================
     	/**
     	 * オブジェクトを書きこみ　　　　

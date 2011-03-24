@@ -42,7 +42,7 @@ package com.romatica.air
         /**
          * ByteArrayを読み込み　　
          */
-       public static function read( filename : String) : ByteArray
+        public static function read(filename : String) : ByteArray
         {
             var appStorageDir : File = File.applicationStorageDirectory;
             var f : File = appStorageDir.resolvePath(filename);
@@ -53,8 +53,8 @@ package com.romatica.air
                 data = new ByteArray();
                 s.readBytes(data);
             } catch (e : Error) {
-                e.message = "[ERROR IOByteArray.read] " +e.message;
-                throw e;
+//                e.message = "[ERROR IOByteArray.read] " +e.message;
+//                throw e;
             } finally {
                 s.close();
             }
