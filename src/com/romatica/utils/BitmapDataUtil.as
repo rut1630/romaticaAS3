@@ -2,9 +2,11 @@
  *============================================================
  * copyright(c). romatica.com
  * @author  itoz
- * @version 0.0.1 2011.1.17
+ * @version 0.2.0 
+ * 2011.1.17
  *============================================================
  *2011.3.24  correctExifOrientメソッド追加　：eixfのOrientation(回転情報)から、正の位置に補正したBitmapDataを返す.
+ *2011.3.25  reseizeKeepRatio　：正方形を返していたのを画像サイズぴったりのサイズを返すように変更
  */
 package com.romatica.utils
 {
@@ -23,20 +25,24 @@ package com.romatica.utils
 
 		/**
 		 * BMDの縦か横の長いほうを基準に、指定した値まで（比率はそのままに）リサイズしたBMDを返す
+		 * @param bmd リサイズ対象
+		 * @param size この値を、縦か横の長いほうになるようリサイズ
 		 */
-		public static function reseizeKeepRatio (trgBMD : BitmapData , size : int) : BitmapData
+		public static function reseizeKeepRatio (bmd : BitmapData , size : int) : BitmapData
 		{
-			var bmdW 	: uint	 = trgBMD.width;		//ターゲットBMDの幅
-			var bmdH 	: uint	 = trgBMD.height;		//ターゲットBMDの高さ
+			var bmdW 	: uint	 = bmd.width;		//ターゲットBMDの幅
+			var bmdH 	: uint	 = bmd.height;		//ターゲットBMDの高さ
 			var maxLeng : Number = (bmdW > bmdH ) ? bmdW : bmdH;	//ターゲットのどちらか長いほう
 			var magnif 	: Number = size / maxLeng;					// 縮小率
 			//
-			var ww : Number = trgBMD.width  * magnif; //実際適用する幅サイズ
-			var hh : Number = trgBMD.height * magnif; //実際適用する高さサイズ
+			var ww : Number = bmd.width  * magnif; //実際適用する幅サイズ
+			var hh : Number = bmd.height * magnif; //実際適用する高さサイズ
 
-			var bmd:BitmapData = new BitmapData( size, size, true, 0x00ffffff );
-			bmd.draw( trgBMD, new Matrix( magnif, 0, 0, magnif, (size / 2 - ww / 2), (size / 2 - hh / 2) ) ,null,null,null,true);
-			return bmd;
+            // var bmd:BitmapData = new BitmapData( size, size, true, 0x00ffffff );//2011.3.25  commentout
+            // bmd.draw( trgBMD, new Matrix( magnif, 0, 0, magnif, (size / 2 - ww / 2), (size / 2 - hh / 2) ) ,null,null,null,true);//2011.3.25  commentout
+			var reiszeBMD:BitmapData = new BitmapData( ww, hh, true, 0x00ffffff );
+			reiszeBMD.draw( bmd, new Matrix( magnif, 0, 0, magnif, 0, 0 ) ,null,null,null,true);
+			return reiszeBMD;
 		}
 		
         /**
