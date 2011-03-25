@@ -31,10 +31,10 @@ package com.romatica.air.android.cameraui
 
         public function CameraUIView(model : CameraUIModel,controller:CameraUIController)
         {
-            addEventListener(Event.ADDED_TO_STAGE, onInit);
             _model = model;
             _model.addEventListener(CameraUIEvent.IMAGE_LOAD_COMPLETE, onImageLoadComplete);
             _controller = controller;
+            addEventListener(Event.ADDED_TO_STAGE, onInit);
             
         }
 
