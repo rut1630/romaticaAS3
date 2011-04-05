@@ -2,43 +2,4 @@ h1. Romatica AS3 Class
 "http://www.romatica.com/":http://www.romatica.com/
 author itoz
 
-
-h2. 逆引きINDEX
-
-h4. +com/romatica/anmation/+
- * 8の字にアニメーションする位置情報を取得したい。+FigureEight.as+
-
-h4. +com/romatica/load/+ 
- * 非同期で複数画像を順に読み込みたい。+ImageLoadQueue.as+
- * 非同期で複数XMLを順に読み込みたい。+XMLLoadQueue.as+
- 
-h4. +com/romatica/net/+
- * swfの再生されている場所がローカルかサーバーか判断したい。+CheckDomain.as+
-
-h4. +com/romatica/ui/+
- * シンプルにボタンイベントを設定したい。+SimpleButtonEvents.as+
- * シンプルにトグルボタンを作成したい。+Toggle.as+
- * シンプルにスイッチメニュー(単一選択)を作成したい(HTMLのラジオボタンのような)。+SwitchMenu.as+
- * シンプルにスイッチメニュー(複数選択可能)を作成したい(HTMLのチェックボックスのような)。+MutalSwitchMenu.as+
- 
-h4. +com/romatica/utils/+
- * 配列を、ランダムに並べ替え。+ArrayUtil.as+
- * 配列を、指定された配列順に並べ替え。+ArrayUtil.as+
- * ランダム数値配列を作成。+ArrayUtil.as+
- * 配列の指定位置を取り除きたい。+ArrayUtil.as+
- * 配列を指定文字列の登場順にならべかえたい。+ArrayUtil.as+
- * オブジェクト配列の値を元に、指定文字列の登場順にならべかえる。+ArrayUtil.as+
- * 1次元配列を2次元配列にしたい(配列を分割)。+ArrayUtil.as+
- * 2次元配列を1次元にしたい。+ArrayUtil.as+
-
- * 前回のアクセスから何分経過したか取得したい。+AccessTimeCheck.as+
- * BitmapDataの縦か横の長いほうを基準に、指定した値まで（比率はそのままに）リサイズ。+BitmapDataUtil.as+
- * ローマ字をひらがなに変換したい。+ConversionHira.as+
- * ひらがなをカタカナに、カタカナをひらがなに変換したい。+ConversionHira.as+
- * 2つのDateクラスの差(日、時、分、秒、ミリ秒)を取得したい。+DateUtil.as+
- * タイル状に並べた位置を取得したい。+FormInLine.as+
- * 整数の頭に指定した桁になるように0を足したい(00125,002等)。+NumUtil.as+
- 
- 
-h3.  thank you!
  
