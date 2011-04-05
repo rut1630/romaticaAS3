@@ -55,57 +55,69 @@ package com.romatica.utils
         {
             var correctBMD : BitmapData;
             var mat : Matrix = new Matrix();
+            var w : int;
+            var h : int;
             switch(exifOrient) {
                 case 2:
                     // trace(exifOrient  + " : 左右反転している");
-                    correctBMD = new BitmapData(bitmapData.width, bitmapData.height);
+                    w = bitmapData.width;
+                    h = bitmapData.height;
                     mat.a = -1;
                     mat.translate(bitmapData.width, 0);
                     break;
                 case 3:
                     // trace(exifOrient  + " : 180°回転している");
-                    correctBMD = new BitmapData(bitmapData.width, bitmapData.height);
+                    w = bitmapData.width;
+                    h = bitmapData.height;
                     mat.rotate(180 * (Math.PI / 180));
                     mat.translate(bitmapData.width, bitmapData.height);
                     break;
                 case 4:
                     // trace(exifOrient + " : 上下反転している");
-                    correctBMD = new BitmapData(bitmapData.width, bitmapData.height);
+                    w = bitmapData.width;
+                    h = bitmapData.height;
                     mat.d = -1;
                     mat.translate(0, bitmapData.height);
                     break;
                 case 5:
                     // trace(exifOrient + " : 上下反転 > 時計回りに90°回転している ");
-                    correctBMD = new BitmapData(bitmapData.height, bitmapData.width);
+                    w = bitmapData.height;
+                    h = bitmapData.width;
                     mat.a = -1;
                     mat.rotate(-90 * (Math.PI / 180));
                     break;
                 case 6:
                     // trace(exifOrient + " : 反時計回りに90°回転している");
-                    correctBMD = new BitmapData(bitmapData.height, bitmapData.width);
+                    w = bitmapData.height;
+                    h = bitmapData.width;
                     mat.rotate(90 * (Math.PI / 180));
                     mat.translate(bitmapData.height, 0);
                     break;
+                    
                 case 7:
                     // trace(exifOrient  + " : 上下反転 > 反時計回りに90°回転 している");
-                    correctBMD = new BitmapData(bitmapData.height, bitmapData.width);
+                    w = bitmapData.height;
+                    h = bitmapData.width;
                     mat.d = -1;
                     mat.rotate(-90 * (Math.PI / 180));
                     mat.translate(bitmapData.height, bitmapData.width);
                     break;
                 case 8:
                     // trace(exifOrient  + " : 時計回りに90°回転している");
-                    correctBMD = new BitmapData(bitmapData.height, bitmapData.width);
+                    w = bitmapData.height;
+                    h = bitmapData.width;
                     mat.rotate(-90 * (Math.PI / 180));
                     mat.translate(0, bitmapData.width);
                     break;
                 default :
                     // trace(exifOrient + " :通常 or 回転情報がありません");
-                    correctBMD = new BitmapData(bitmapData.width, bitmapData.height);
+                    w = bitmapData.width;
+                    h = bitmapData.height;
                     break;
             }
+            correctBMD = new BitmapData(w, h, true, 0x33333333);
             correctBMD.draw(bitmapData, mat);
             return correctBMD;
         }
-	}
+    }
 }

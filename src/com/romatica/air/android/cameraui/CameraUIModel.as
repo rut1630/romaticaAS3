@@ -68,7 +68,6 @@ package com.romatica.air.android.cameraui
             _loaderExif = null;
             _loaderExif = new ExifLoader();
             _loaderExif.addEventListener(Event.COMPLETE, onExifLoadComplete);
-            _loaderExif.addEventListener(Event.COMPLETE, onExifLoadComplete);
             _loaderExif.load(new URLRequest(_mediapromise.file.url));
         }
 

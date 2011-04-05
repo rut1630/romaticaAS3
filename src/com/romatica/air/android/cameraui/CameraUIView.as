@@ -51,7 +51,7 @@ package com.romatica.air.android.cameraui
         /**
          * CameraUIを起動
          */
-         public  function setCameraUI() : void
+        public  function setCameraUI() : void
         {
             _cameraUI = new CameraUI();
             _cameraUI.addEventListener(ErrorEvent.ERROR, onIOError);
